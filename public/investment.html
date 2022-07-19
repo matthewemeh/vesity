@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="scroll-smooth m-0 p-0 border-0 outline-0 cursor-default list-none no-underline box-border"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vesity - Investment</title>
+    <link rel="stylesheet" href="dist.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      const updateInvestment = index => {
+        localStorage.price = document.querySelector(`#price-${index}`).innerText;
+        localStorage.address = document.querySelector(`#address-${index}`).innerText;
+        localStorage.investors = document.querySelector(`#investors-${index}`).innerText;
+        localStorage.percentValue = document.querySelector(`#percent-${index}`).innerText;
+        localStorage.propertyImage = document.querySelector(`#image-${index}`).getAttribute('src');
+        localStorage.title = document.querySelector(`#title-${index}`).innerHTML.split('<')[0];
+        localStorage.tradeImage = document
+          .querySelector(`#trade-image-${index}`)
+          .getAttribute('src');
+        let newUrl = window.location.href.split('/');
+        newUrl.pop();
+        newUrl.push('payment.html');
+        newUrl = newUrl.join('/');
+        window.location.href = newUrl;
+      };
+    </script>
+  </head>
+  <body>
+    <div class="investment bg-white pt-[60px]">
+      <header class="nav flex justify-between px-[53px] mb-[115px]">
+        <img src="./assets/svg/vesity.svg" class="w-[109px] h-6 object-contain" />
+        <a
+          href="./my-details.html"
+          class="text-cardinal font-bold border-[1px] border-solid border-cardinal rounded-[10px] px-[29px] py-[13px]"
+          >My account</a
+        >
+      </header>
+
+      <a
+        href="./chat.html"
+        class="bg-cardinal flex items-center justify-center w-[66px] h-[66px] rounded-full absolute top-[900px] left-[90%]"
+        ><img src="./assets/svg/comment-round.svg"
+      /></a>
+
+      <section
+        class="opportunities px-[149px] mb-[318px] font-circular-std font-medium text-[36px] leading-[46px] text-black"
+      >
+        <h1 class="uppercase text-left pb-10">current investment opportunities</h1>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img
+            src="./assets/images/bean-plot.png"
+            id="image-1"
+            class="w-[239px] h-full rounded-[10px]"
+          />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-1" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Bean Plot
+                <span id="address-1" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >35 Stave Road, Lagos</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-success-green">
+              <img src="./assets/svg/gain.svg" id="trade-image-1" class="w-[10px] h-[7.43px]" />
+              <small id="percent-1" class="text-success-green">23%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-1" class="text-black">N50,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-1" class="text-black">320</span>
+              </p>
+              <button
+                onclick="updateInvestment(1)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img
+            src="./assets/images/quanly-plot.png"
+            id="image-2"
+            class="w-[239px] h-full rounded-[10px]"
+          />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-2" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Quanly Plot
+                <span id="address-2" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >3 Area 2 Road, Abuja</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-torch-red">
+              <img src="./assets/svg/loss.svg" id="trade-image-2" class="w-[10px] h-[7.43px]" />
+              <small id="percent-2">3%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-2" class="text-black">N10,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-2" class="text-black">90</span>
+              </p>
+              <button
+                onclick="updateInvestment(2)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img src="./assets/images/quanly-plot2.png" class="w-[239px] h-full rounded-[10px]" />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-3" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Quanly Plot
+                <span id="address-3" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >3 Area 2 Road, Abuja</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-torch-red">
+              <img src="./assets/svg/loss.svg" id="trade-image-3" class="w-[10px] h-[7.43px]" />
+              <small id="percent-3">3%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-3" class="text-black">N10,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-3" class="text-black">90</span>
+              </p>
+              <button
+                disabled
+                onclick="updateInvestment(3)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center disabled:text-martini"
+              >
+                Sold out
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img
+            src="./assets/images/bean-plot2.png"
+            id="image-4"
+            class="w-[239px] h-full rounded-[10px]"
+          />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-4" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Bean Plot
+                <span id="address-4" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >35 Stave Road, Lagos</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-success-green">
+              <img src="./assets/svg/gain.svg" id="trade-image-4" class="w-[10px] h-[7.43px]" />
+              <small id="percent-4">23%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-4" class="text-black">N50,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-4" class="text-black">320</span>
+              </p>
+              <button
+                onclick="updateInvestment(4)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="uppercase text-left pb-10 mt-[45px]">Investment opportunities in your area</h1>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img
+            src="./assets/images/bean-plot3.png"
+            id="image-5"
+            class="w-[239px] h-full rounded-[10px]"
+          />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-5" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Bean Plot
+                <span id="address-5" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >35 Stave Road, Lagos</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-success-green">
+              <img src="./assets/svg/gain.svg" id="trade-image-5" class="w-[10px] h-[7.43px]" />
+              <small id="percent-5">23%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-5" class="text-black">N50,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-5" class="text-black">320</span>
+              </p>
+              <button
+                onclick="updateInvestment(5)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="opportunity font-normal text-[18px] leading-[23px] w-[1014px] h-[169px] border-[1px] border-solid border-gray rounded-[10px] flex mb-5"
+        >
+          <img
+            src="./assets/images/bean-plot4.png"
+            id="image-6"
+            class="w-[239px] h-full rounded-[10px]"
+          />
+          <div class="p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p id="title-6" class="font-bold text-[24px] leading-[30px] mb-[10px]">
+                Bean Plot
+                <span id="address-6" class="font-normal text-[18px] leading-[23px] text-dorado"
+                  >35 Stave Road, Lagos</span
+                >
+              </p>
+              <img src="./assets/svg/info.svg" class="w-5 h-5" />
+            </div>
+
+            <div class="flex gap-x-[10px] items-center justify-start text-success-green">
+              <img src="./assets/svg/gain.svg" id="trade-image-6" class="w-[10px] h-[7.43px]" />
+              <small id="percent-6">23%</small>
+            </div>
+
+            <p class="flex gap-x-5 items-center justify-start mb-[10px] text-gray">
+              Price per unit <span id="price-6" class="text-black">N50,000</span>
+            </p>
+
+            <div class="flex items-center justify-between">
+              <p class="flex gap-x-[55px] items-center justify-start mb-[10px] text-gray">
+                Investors <span id="investors-6" class="text-black">320</span>
+              </p>
+              <button
+                onclick="updateInvestment(6)"
+                class="bg-cardinal rounded-[10px] text-white font-bold w-[100px] h-10 flex items-center justify-center"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="footer bg-black h-[120px] pl-[100px] py-[8px] text-white flex items-center justify-start"
+      >
+        <img src="./assets/svg/vesity-white.svg" class="mr-[33px] w-[109px] h-6" />
+        <div class="w-[1px] h-[70px] bg-white mr-6">&nbsp;</div>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/facebook.svg" class="w-6 h-6" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/instagram.svg" class="w-6 h-6 mx-6" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/twitter.svg" class="w-6 h-6" />
+        </a>
+      </section>
+    </div>
+  </body>
+</html>

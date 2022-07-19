@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="scroll-smooth m-0 p-0 border-0 outline-0 cursor-default list-none no-underline box-border"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vesity - Payment</title>
+    <link rel="stylesheet" href="dist.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      const toggleCongratsMessage = () => {
+        const yScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        const divWrapper = document.querySelector('#congrats-msg-wrapper');
+
+        divWrapper.style.top = `${yScrollPos}px`;
+        divWrapper.classList.toggle('hidden');
+      };
+
+      const updateUnits = n => {
+        const oldUnits = parseInt(document.querySelector('#total-units').innerText);
+
+        if (oldUnits === 1 && n === -1) return;
+
+        const newUnits = oldUnits + n;
+        const pricePerUnit = document
+          .querySelector('#price')
+          .innerText.replace('N', '')
+          .replace(',', '');
+        const newPrice = newUnits * pricePerUnit;
+
+        document.querySelector('#total-units').innerText = newUnits;
+        document.querySelector('#display-units').innerText = newUnits;
+        document.querySelector('#total-price').innerText = `N${newPrice.toLocaleString('en-US')}`;
+      };
+
+      window.onload = () => {
+        document.querySelector('#title').innerHTML = `${localStorage.title}
+            <span id="address" class="font-normal text-[24px] leading-[30px] text-dorado"
+              >${localStorage.address}</span
+            >`;
+        document.querySelector('#price').innerText = localStorage.price;
+        document.querySelector('#total-price').innerText = localStorage.price;
+        document.querySelector('#investors').innerText = localStorage.investors;
+        document.querySelector('#trade-image').setAttribute('src', localStorage.tradeImage);
+        document.querySelector(
+          '#property-image'
+        ).style.backgroundImage = `url(${localStorage.propertyImage})`;
+        document.querySelector('#percent').innerText = localStorage.percentValue;
+        document.querySelector('#percent').style.color = localStorage.tradeImage.includes('gain')
+          ? '#00ff0a'
+          : '#ff003e';
+      };
+    </script>
+  </head>
+  <body>
+    <div class="payment bg-white pt-[60px]">
+      <header class="nav flex justify-between px-[53px] mb-[60px]">
+        <img src="./assets/svg/vesity.svg" class="w-[109px] h-6 object-contain" />
+        <a
+          href="./my-details.html"
+          class="text-cardinal font-bold border-[1px] border-solid border-cardinal rounded-[10px] px-[29px] py-[13px]"
+          >My account</a
+        >
+      </header>
+
+      <section
+        class="font-circular-std text-black font-normal text-[24px] leading-[30px] px-[129px]"
+      >
+        <a href="./investment.html" class="mb-5">Back</a>
+
+        <div
+          id="property-image"
+          class="bg-[url(./assets/images/bean-plot8.png)] rounded-[10px] bg-center bg-cover bg-no-repeat w-full h-[393px] mb-[50px]"
+        >
+          <button
+            class="w-10 h-10 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg rounded-full flex items-center justify-center relative top-[45%] left-[2%]"
+          >
+            <img src="./assets/svg/left.svg" />
+          </button>
+
+          <button
+            class="w-10 h-10 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg rounded-full flex items-center justify-center relative top-[35%] left-[95%]"
+          >
+            <img src="./assets/svg/right.svg" />
+          </button>
+        </div>
+
+        <div class="flex items-center justify-between mb-5">
+          <p
+            id="title"
+            class="font-bold text-[40px] flex gap-x-[30px] items-center justify-center leading-[51px]"
+          >
+            Bean Plot
+            <span id="address" class="font-normal text-[24px] leading-[30px] text-dorado"
+              >35 Stave Road, Lagos</span
+            >
+          </p>
+          <p class="flex items-center justify-center text-gray">
+            Market value <img id="trade-image" src="./assets/svg/gain.svg" class="pl-5 pr-4" />
+            <span id="percent" class="text-success-green">23%</span>
+          </p>
+        </div>
+
+        <p
+          class="flex gap-x-[63px] items-center justify-start font-normal text-[18px] leading-[23px] text-gray mb-5"
+        >
+          Price per unit
+          <span id="price" class="text-black">N50,000</span>
+        </p>
+
+        <p
+          class="flex gap-x-[93px] items-center justify-start font-normal text-[18px] leading-[23px] text-gray mb-[50px]"
+        >
+          Investors
+          <span id="investors" class="text-black">320</span>
+        </p>
+
+        <div class="line h-[1px] w-[95%] mb-[50px] mx-auto bg-black">&nbsp;</div>
+
+        <p
+          class="flex gap-x-[85px] items-center justify-start font-normal text-[18px] leading-[23px] text-gray mb-5"
+        >
+          Total units
+          <span id="total-units" class="text-black">1</span>
+        </p>
+
+        <div
+          class="w-[102px] h-7 mb-5 grid grid-cols-3 grid-flow-row rounded-[10px] border-[1px] border-solid border-silver font-sf-pro-rounded text-[14px] leading-[17px] text-black"
+        >
+          <button class="self-center mx-auto w-full h-full" onclick="updateUnits(-1)">
+            <img src="./assets/svg/minus.svg" class="self-center mx-auto" />
+          </button>
+          <p id="display-units" class="border-x-[1px] flex items-center justify-center">1</p>
+          <button class="self-center mx-auto w-full h-full" onclick="updateUnits(1)">
+            <img src="./assets/svg/plus.svg" class="self-center mx-auto" />
+          </button>
+        </div>
+
+        <p
+          class="flex gap-x-[85px] items-center justify-start font-normal text-[18px] leading-[23px] text-gray mb-[30px]"
+        >
+          Total price
+          <span id="total-price" class="text-black">N100,000</span>
+        </p>
+
+        <button
+          class="text-white bg-cardinal w-[345px] h-[50px] mx-auto flex items-center justify-center rounded-[10px] mb-[10px]"
+          onclick="toggleCongratsMessage()"
+        >
+          Buy now
+        </button>
+        <small class="block text-[18px] leading-[23px] text-gray text-center mb-[66px]"
+          >Invest now to avoid selling out.</small
+        >
+      </section>
+
+      <section
+        class="footer bg-black h-[120px] pl-[100px] py-[8px] text-white flex items-center justify-start"
+      >
+        <img src="./assets/svg/vesity-white.svg" class="mr-[33px] w-[109px] h-6" />
+        <div class="w-[1px] h-[70px] bg-white mr-6">&nbsp;</div>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/facebook.svg" class="w-6 h-6" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/instagram.svg" class="w-6 h-6 mx-6" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/svg/twitter.svg" class="w-6 h-6" />
+        </a>
+      </section>
+
+      <div
+        id="congrats-msg-wrapper"
+        class="absolute top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.2)] hidden"
+        onclick="toggleCongratsMessage()"
+      >
+        <div
+          id="congrats-msg"
+          class="select-none relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white font-circular-std uppercase text-center w-[630px] h-[538px] backdrop-blur-[31px] rounded-[31px] shadow-[0_0_25px_14px_rgba(0,0,0,0.2)] font-medium"
+        >
+          <div class="flex items-center justify-center">
+            <img src="./assets/svg/congrats-left.svg" class="w-[164px] h-[268px] object-contain" />
+            <img src="./assets/svg/congrats-right.svg" class="w-[164px] h-[268px] object-contain" />
+          </div>
+
+          <p class="text-[40px] leading-[51px] mb-7 mt-[30px]">Congrats</p>
+
+          <p class="text-[24px] leading-[30px] w-[429px] mx-auto">
+            You have sucessfully aquired the Bean plot property
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

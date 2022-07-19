@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="scroll-smooth m-0 p-0 border-0 outline-0 cursor-default list-none no-underline box-border"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vesity - Login</title>
+    <link rel="stylesheet" href="dist.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div
+      class="login from-[#ffbccd_-32.85%] to-[#f7f7f7_70.29%] bg-gradient-52.48 pt-[112px] flex flex-col items-center justify-center pb-[58px]"
+    >
+      <img src="./assets/svg/vesity.svg" class="mb-10 w-[109px] h-6 object-contain" />
+
+      <form
+        class="bg-white rounded-[10px] border-[1px] border-solid border-mercury w-[606px] h-[536px] py-[50px] px-[90px] mb-5 font-circular-std font-normal text-[18px] leading-6 text-black text-center"
+      >
+        <h1 class="font-medium text-[44px] leading-[56px] mb-[50px]">Log in</h1>
+
+        <div class="input-group w-full mb-7">
+          <label for="email" class="pb-5 block text-left">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="placeholder:text-gray border-[1px] border-solid border-silver rounded-[10px] w-full h-14 px-6 outline-none"
+            placeholder="Jasonfroster23@gmail.com"
+            required
+          />
+        </div>
+
+        <div class="input-group w-full mb-[50px]">
+          <label for="password" class="pb-5 block text-left">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="placeholder:text-gray border-[1px] border-solid border-silver rounded-[10px] w-full h-14 px-6 outline-none"
+            placeholder="Minimum 8 characters"
+            required
+          />
+        </div>
+
+        <a
+          href="./my-details.html"
+          class="bg-cardinal rounded-[10px] text-white w-[426px] h-[60px] py-4 px-32 cursor-pointer"
+          >LOG IN</a
+        >
+      </form>
+
+      <div
+        class="text-dorado font-circular-std font-normal text-[18px] leading-6 text-center flex flex-col gap-y-[10px]"
+      >
+        <p>
+          Don't have an account?
+          <a href="./sign-up.html" class="text-cardinal">Sign up</a>
+        </p>
+
+        <a href="./forgot-password.html" class="text-cardinal">Forgot password</a>
+      </div>
+    </div>
+  </body>
+</html>
