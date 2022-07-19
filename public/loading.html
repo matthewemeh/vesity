@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="dist.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- This is the loading page user sees at root url i.e 'https://vesity.domain-name/', after which the user is redirected to the home.html(after 5s) -->
+    <script>
+      setTimeout(() => {
+        let newUrl = window.location.href.split('/');
+        newUrl.pop();
+        newUrl.push('home.html');
+        newUrl = newUrl.join('/');
+        window.location.href = newUrl;
+      }, 5000);
+    </script>
   </head>
   <body class="w-screen h-screen bg-alto flex flex-col items-center justify-center gap-y-[30px]">
     <div>
